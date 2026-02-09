@@ -1,10 +1,9 @@
 """
 Entidad Planta - Dominio puro
 """
-from dataclasses import dataclass
-from typing import Optional
+from dataclasses import dataclass, field
+from datetime import datetime, timezone
 from uuid import UUID, uuid4
-
 
 @dataclass
 class Planta:
@@ -13,6 +12,7 @@ class Planta:
     nombre: str
     ubicacion: str
     activa: bool = True
+    fecha_creacion: datetime = None    #field(default_factory=datetime.now(timezone.utc))
     
     @staticmethod
     def crear(nombre: str, ubicacion: str) -> 'Planta':

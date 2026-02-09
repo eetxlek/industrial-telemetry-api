@@ -2,11 +2,12 @@
 Value Object Metrica - Dominio puro
 """
 from dataclasses import dataclass
+import hashlib
 from typing import Optional
 from uuid import UUID
 from datetime import datetime
 
-#inmutable, value object. Se comparan por sus atributos, no por su identidad unica como en agregados. Aqui dos metricas con valores iguales, son iguales. Solo almacena datos.
+#inmutable, value object DDD (integridad semantica). Se comparan por sus atributos, no por su identidad unica como en agregados. Aqui dos metricas con valores iguales, son iguales. Solo almacena datos.
 @dataclass(frozen=True)
 class Metrica:
     """
@@ -42,3 +43,11 @@ class Metrica:
         if self.valor_promedio == 0 or self.total_registros == 0:
             return 0.0
         return (self.rango / self.valor_promedio) * 100
+    
+    @property
+    def fingerprint(self) -> str:
+        # Genera un hash único basado en los valores clave
+        # Aseguramos que el None no rompa la cadena y el float sea estable
+        inicio = self.periodo_inicio.isoformat() if self.periodo_inicio else "static"
+        payload = f"{self.sensor_id}-{inicio}-{self.valor_promedio:.4f}"
+        return hashlib.sha256(payload.encode()).hexdigest()

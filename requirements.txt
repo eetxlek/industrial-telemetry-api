@@ -1,11 +1,22 @@
+# Web Framework
 fastapi 
 uvicorn[standard] 
+# Base de Datos (async con PostgreSQL)
 sqlalchemy 
-asyncpg 
+psycopg2-binary    # default driver de Alchemy
+asyncpg             # driver para async
+# Validación y Settings
 pydantic 
 pydantic-settings 
+# Seguridad
 python-jose[cryptography] 
 passlib[bcrypt] 
+# Utilidades
 python-multipart 
-slowapi 
 python-dotenv
+# Rate Limiting
+slowapi 
+# Logging (JSON para producción)
+python-json-logger
+# comunicacion asyncpg sobre amqp
+aio-pika
