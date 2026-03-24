@@ -48,7 +48,7 @@ class PostgresTelemetriaRepository(TelemetriaRepository):
         #  await self.session.commit()  # <--- NO commit aquí, la gestion de commit en service.
     
     async def guardar_lote(self, telemetrias: List[Telemetria]) -> None:
-            """Bulk insert optimizado en vez de commit en cada"""
+        """Bulk insert optimizado en vez de commit en cada"""
         telemetrias_dict = [
             {
                 "id": t.id,

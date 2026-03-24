@@ -20,3 +20,6 @@ slowapi
 python-json-logger
 # comunicacion asyncpg sobre amqp
 aio-pika
+pytest
+pytest-asyncio
+pytest-cov

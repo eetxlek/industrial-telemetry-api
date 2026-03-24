@@ -491,7 +491,16 @@ project/
 │
 ├── alembic/                  # Migraciones
 │   └── versions/
-├── tests/                    # Tests
+|
+├── tests/
+|   ├── domain/              # Tests de entidades y reglas de negocio
+|   │   ├── test_sensor.py   # Validaciones de sensor
+|   │   └── test_telemetria.py # Integridad blockchain
+|   ├── application/         # Tests de servicios (orquestación)
+|   │   └── test_telemetria_service.py
+|   └── integration/         # Tests con infraestructura real
+|       └── test_db_persistence.py
+|
 ├── main.py                   # Punto de entrada
 ├── requirements.txt
 └── README.md
@@ -593,10 +602,25 @@ valor < 0 → ValueError("No puede ser negativo")
 pytest
 
 # Con cobertura
-pytest --cov=application --cov=domain
+pytest --cov=application --cov=domain --cov=infra
 
-# Tests específicos
-pytest tests/test_telemetria_service.py
+# Tests unitarios (todos)
+pytest tests/unit/
+
+# Tests unitarios de dominio
+pytest tests/unit/domain/
+
+# Tests unitarios de aplicación (servicios)
+pytest tests/unit/application/
+
+# Tests de integración (PostgreSQL real)
+pytest tests/integration/
+
+# Tests específicos por archivo
+pytest tests/unit/domain/test_sensor.py           # Validaciones de sensor
+pytest tests/unit/domain/test_telemetria.py       # Integridad blockchain
+pytest tests/unit/application/test_telemetria_service.py  # Orquestación
+pytest tests/integration/test_postgres_repo.py    # Persistencia real
 ```
 
 ---
