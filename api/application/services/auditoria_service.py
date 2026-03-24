@@ -3,7 +3,7 @@ Servicio de auditoría para verificar integridad de cadenas de telemetría
 """
 from typing import List, Tuple
 from uuid import UUID
-from application.ports.repositories import TelemetriaRepository
+from api.application.ports.repositories import TelemetriaRepository
 
 #audita integirdad de datos. Si la cadena se manipula, elimina o inserta, deja huella. 
 class AuditoriaService:

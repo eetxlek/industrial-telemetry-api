@@ -1,21 +1,33 @@
-from unittest.mock import Mock
+from unittest.mock import AsyncMock, Mock
 from uuid import uuid4
+
+import pytest
+
 from api.application.services.telemetria_service import TelemetriaService
 
-def test_registro_telemetria_orquestacion():
-    # Mocks de los adaptadores de infra (puertos)
-    mock_repo = Mock()
-    mock_bus = Mock()
-
-    # servicio real pero con mocks, patron dependency injection
-    service = TelemetriaService(repository=mock_repo, event_bus=mock_bus) 
+@pytest.mark.asyncio
+async def test_registro_telemetria_orquestacion():
+    # Mocks
+    mock_sensor_repo = AsyncMock()
+    mock_telemetria_repo = AsyncMock()
+    mock_event_bus = AsyncMock()
+    mock_session = AsyncMock()
     
-    # Ejecutamos la acción real
-    service.registrar_lectura(sensor_id=uuid4(), valor=22.4)
+    # Configurar mocks
+    mock_sensor_repo.obtener_por_id.return_value = Mock(activo=True)
+    mock_telemetria_repo.obtener_ultimo_hash.return_value = "0"
     
-    # Verificamos que se llamó al repo para guardar
-    assert mock_repo.save.called
-    # Verificamos que se publicó un evento
-    assert mock_bus.publish.called
-
-# test que verifica que service actua correctamente de orquestador (coge dato y pasa a dominio)
+    service = TelemetriaService(
+        sensor_repo=mock_sensor_repo,
+        telemetria_repo=mock_telemetria_repo,
+        event_publisher=mock_event_bus,
+        session=mock_session
+    )
+    
+    # Ejecutar
+    await service.registrar_lectura(sensor_id=uuid4(), valor=22.4)
+    
+    # Verificar
+    mock_telemetria_repo.guardar.assert_awaited_once()
+    mock_event_bus.publicar.assert_awaited_once()
+    mock_session.commit.assert_awaited_once()

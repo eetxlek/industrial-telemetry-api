@@ -7,8 +7,6 @@ from datetime import datetime
 from pydantic import BaseModel, Field, field_validator
 from enum import Enum
 
-from domain.entities.sensor import TipoSensor
-
 
 class TipoSensorEnum(str, Enum):
     """Enum para tipos de sensor en API"""

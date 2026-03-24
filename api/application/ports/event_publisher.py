@@ -4,7 +4,7 @@ Puertos para Publicación de Eventos de Dominio - Dominio puro
 from abc import ABC, abstractmethod
 from typing import Iterable
 
-from domain.events.base import DomainEvent
+from api.domain.events.base import DomainEvent
 
 # ========== PUBLISHER INTERFACE ==========
 class EventPublisher(ABC):

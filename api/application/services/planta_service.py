@@ -1,6 +1,6 @@
 from uuid import UUID
-from application.ports.repositories import PlantaRepository
-from domain.entities.planta import Planta # Asegúrate de tener tu entidad de dominio
+from api.application.ports.repositories import PlantaRepository
+from api.domain.entities.planta import Planta # Asegúrate de tener tu entidad de dominio
 
 class PlantaService:
     def __init__(self, planta_repo: PlantaRepository):

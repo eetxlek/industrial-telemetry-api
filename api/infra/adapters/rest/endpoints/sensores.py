@@ -6,11 +6,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 
 from api.infra.adapters.rest.schemas.sensor import SensorCreateRequest, SensorResponse
 from application.services.sensor_service import SensorService
-from infra.config.inyeccion_dependencias import (
-    get_sensor_service,
-    get_sensor_query_params
-)
-
+from infra.config.inyeccion_dependencias import get_sensor_service
 
 router = APIRouter(prefix="/sensores", tags=["sensores"])
 

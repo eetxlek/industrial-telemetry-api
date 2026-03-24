@@ -3,13 +3,12 @@ Implementación concreta de EventPublisher usando RabbitMQ
 """
 import json
 import asyncio
-from typing import List, Optional
-from datetime import datetime, timezone
+from typing import Optional
 import aio_pika
-from aio_pika import Message, DeliveryMode, ExchangeType
+from aio_pika import ExchangeType
 
-from application.ports.event_publisher import EventPublisher
-from domain.events.base import DomainEvent
+from api.application.ports.event_publisher import EventPublisher
+from api.domain.events.base import DomainEvent
 
 # implementacion infra de rabbit para el puerto event.publicar
 class RabbitMQEventPublisher(EventPublisher):

@@ -2,10 +2,9 @@ from uuid import UUID
 from typing import List, Optional
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from application.ports.repositories import PlantaRepository
-from domain.entities.planta import Planta
-from infra.events.adapters.persistance.models import PlantaModel
-
+from api.application.ports.repositories import PlantaRepository
+from api.domain.entities.planta import Planta
+from api.infra.adapters.persistance.models import PlantaModel
 
 class SQLPlantaRepository(PlantaRepository):
     def __init__(self, session: AsyncSession):

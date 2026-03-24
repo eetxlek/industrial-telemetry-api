@@ -5,9 +5,9 @@ from abc import ABC, abstractmethod
 from typing import List, Optional, Tuple
 from uuid import UUID
 from datetime import datetime
-from domain.entities.planta import Planta
-from domain.entities.telemetria import Telemetria
-from domain.entities.sensor import Sensor
+from api.domain.entities.planta import Planta
+from api.domain.entities.telemetria import Telemetria
+from api.domain.entities.sensor import Sensor
 
 
 # ========== SENSOR REPOSITORY ==========

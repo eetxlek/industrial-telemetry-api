@@ -1,9 +1,9 @@
 from typing import List
 from uuid import UUID
-from application.ports.event_publisher import EventPublisher
-from application.ports.repositories import SensorRepository, TelemetriaRepository
-from domain.entities.sensor import Sensor, TipoSensor
-from domain.value_objects.metrica import Metrica
+from api.application.ports.event_publisher import EventPublisher
+from api.application.ports.repositories import SensorRepository, TelemetriaRepository
+from api.domain.entities.sensor import Sensor, TipoSensor
+from api.domain.value_objects.metrica import Metrica
 
 # Gestion de la infra del aparato: crea, update,delete, obtener,listar,activar,desactivar
 class SensorService:

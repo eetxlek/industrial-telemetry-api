@@ -4,11 +4,12 @@ from typing import Optional
 import logging
 from abc import ABC, abstractmethod
 
-from .settings import settings
+from api.infra.config.settings import settings
 
 logger = logging.getLogger(__name__)
 
 class EventBusConfig(ABC):
+    # mismo canal,pero UI espera objetos diferentes.
     """Configuración base para bus de eventos"""
     
     @abstractmethod
@@ -17,6 +18,10 @@ class EventBusConfig(ABC):
     
     @abstractmethod
     def get_consumer(self):
+        pass
+
+    @abstractmethod
+    def close(self):
         pass
 
 class KafkaConfig(EventBusConfig):
@@ -148,6 +153,6 @@ def get_event_bus_config() -> EventBusConfig:
         return RabbitMQConfig()
     else:
         logger.warning("No hay configuración de bus de eventos. Usando mock.")
-        return None  # O una implementación Mock para desarrollo
+        return Optional[EventBusConfig]  # O una implementación Mock para desarrollo
 
 event_bus_config = get_event_bus_config()

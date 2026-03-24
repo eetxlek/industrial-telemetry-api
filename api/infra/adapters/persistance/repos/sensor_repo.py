@@ -1,12 +1,10 @@
 """
 Repositorio PostgreSQL para Sensor
 """
-from sqlite3 import IntegrityError
 from typing import List, Optional
 from uuid import UUID
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select, update, delete
-
+from sqlalchemy import select, update
 from domain.entities.sensor import Sensor
 from application.ports.repositories import SensorRepository
 from ..models import SensorModel

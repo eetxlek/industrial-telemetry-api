@@ -1,8 +1,8 @@
 """
 Entidad Planta - Dominio puro
 """
-from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from dataclasses import dataclass
+from datetime import datetime
 from uuid import UUID, uuid4
 
 @dataclass

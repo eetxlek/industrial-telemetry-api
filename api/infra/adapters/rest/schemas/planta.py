@@ -3,7 +3,7 @@ from uuid import UUID
 from typing import Optional
 from datetime import datetime
 
-from domain.entities.planta import Planta
+from api.domain.entities.planta import Planta
 
 class PlantaCreateRequest(BaseModel):
     nombre: str

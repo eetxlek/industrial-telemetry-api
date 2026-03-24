@@ -1,10 +1,6 @@
-from dataclasses import dataclass, field
-from datetime import datetime, timezone
-from typing import List, Optional
+from dataclasses import dataclass
 from uuid import UUID, uuid4
-
 from api.domain.events.sensor_events import SensorCreado, SensorEstadoCambiado
-from domain.entities.telemetria import Telemetria
 from enum import Enum
 
 class TipoSensor(str, Enum):

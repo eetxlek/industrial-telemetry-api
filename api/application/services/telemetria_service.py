@@ -1,10 +1,10 @@
 from datetime import datetime, timezone
 from typing import List, Optional, Tuple
 from uuid import UUID
-from application.ports.event_publisher import EventPublisher
-from application.ports.repositories import SensorRepository, TelemetriaRepository
-from domain.entities.telemetria import Telemetria
-from domain.events.telemetria_events import TelemetriaRegistrada
+from api.application.ports.event_publisher import EventPublisher
+from api.application.ports.repositories import SensorRepository, TelemetriaRepository
+from api.domain.entities.telemetria import Telemetria
+from api.domain.events.telemetria_events import TelemetriaRegistrada
 from sqlalchemy.ext.asyncio import AsyncSession
 
 # Resgistrar lectura con hash, registrar lote, obtener lecturas, ultima lectura (get historicos))
@@ -90,7 +90,7 @@ class TelemetriaService:
                     last_hash_por_sensor[sensor_id] = (
                         await self.telemetria_repo.obtener_ultimo_hash(sensor_id)
                     )
-
+                previous_hash = last_hash_por_sensor.get(sensor_id, "0")
                 # 3. Crear telemetría encadenada
                 telemetria = Telemetria.crear(
                     sensor_id=sensor_id,

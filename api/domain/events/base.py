@@ -4,8 +4,14 @@ import uuid
 
 @dataclass(frozen=True)
 class DomainEvent:
-    event_id: str = field(default_factory=lambda: str(uuid.uuid4()))
-    occurred_at: datetime = field(default_factory=datetime.now(timezone.utc))
+    event_id: str 
+    occurred_at: datetime 
+
+    def __post_init__(self):
+        if not self.event_id:
+            self.event_id = str(uuid.uuid4())
+        if not self.occurred_at:
+            self.occurred_at = datetime.now(timezone.utc)
 
     @property
     def event_type(self) -> str:

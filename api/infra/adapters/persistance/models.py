@@ -5,9 +5,8 @@ from datetime import datetime, timezone
 import uuid
 from sqlalchemy import Column, Index, String, Float, DateTime, Boolean, Enum, ForeignKey
 from sqlalchemy.dialects.postgresql import UUID
-from sqlalchemy.orm import relationship, declarative_base
+from sqlalchemy.orm import relationship
 import enum
-from domain.entities.planta import Planta
 from infra.config.database import Base
 
 #REALIDAD DE LA BASE DE DATOS

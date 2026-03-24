@@ -1,8 +1,8 @@
 # infra/events/logging_publisher.py
 from dataclasses import asdict
 import json
-from application.ports.event_publisher import EventPublisher
-from domain.events.base import DomainEvent
+from api.application.ports.event_publisher import EventPublisher
+from api.domain.events.base import DomainEvent
 
 class LoggingEventPublisher(EventPublisher):
 

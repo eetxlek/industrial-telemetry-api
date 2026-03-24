@@ -17,8 +17,6 @@ from infra.config.settings import settings
 from infra.config.database import init_db, dispose_db
 from infra.config.logging_config import setup_logging
 
-
-
 # Importar routers (ajusta las rutas según tu estructura)
 
 logger = logging.getLogger(__name__)

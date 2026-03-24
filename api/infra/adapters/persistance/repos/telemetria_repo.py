@@ -5,7 +5,7 @@ from typing import List, Optional
 from uuid import UUID
 from datetime import datetime
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import asc, select, desc, func, and_
+from sqlalchemy import asc, insert, select, desc, and_
 
 from domain.entities.telemetria import Telemetria
 from application.ports.repositories import TelemetriaRepository
