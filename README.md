@@ -2,6 +2,14 @@
 
 Sistema de telemetría para plantas industriales con **garantía de integridad criptográfica** basada en cadenas de hashes (blockchain-like).
 
+## 🎯 Executive Summary 
+
+**¿Problema?** En plantas industriales, los datos de sensores pueden ser manipulados, por error o malicia, llevando a decisiones peligrosas.
+
+**¿Solución?** Esta API registra cada dato de telemetría encadenándolo criptográficamente (hash) con el anterior, como un blockchain. Cualquier modificación posterior es detectable al instante vía auditoría.
+
+**¿Resultado?** Los ingenieros y auditores pueden **demostrar matemáticamente** que los datos no han sido alterados desde su origen.
+
 ## 📚 Contenido
 
 1. Características Principales
